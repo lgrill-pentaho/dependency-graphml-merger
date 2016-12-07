@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?> <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key for="node" id="d0" yfiles.type="nodegraphics"/> 
+  <key for="edge" id="d1" yfiles.type="edgegraphics"/> 
+  <key for="node" id="_name" attr.name="_name" attr.type="string"/> 
+  <key for="edge" id="_label" attr.name="_label" attr.type="string"/> 
+  <key for="node" id="groupId" attr.name="groupId" attr.type="string"/> 
+  <key for="node" id="artifactId" attr.name="artifactId" attr.type="string"/> 
+  <key for="node" id="version" attr.name="version" attr.type="string"/> 
+  <key for="node" id="classifier" attr.name="classifier" attr.type="string"/> 
+  <key for="node" id="type" attr.name="type" attr.type="string"/> 
+<graph id="dependencies" edgedefault="directed">
+<node id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>pentaho-geo-core:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">pentaho-geo-core:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">pentaho-geo-core</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<node id="pentaho:pentaho-ee-mock-dsc:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>pentaho-ee-mock-dsc:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">pentaho-ee-mock-dsc:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">pentaho-ee-mock-dsc</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar|test|pentaho:pentaho-ee-mock-dsc:7.1-SNAPSHOT:jar" source="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar" target="pentaho:pentaho-ee-mock-dsc:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>test</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">test</data></edge>
+<node id="pentaho-kettle:kettle-engine:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>kettle-engine:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">kettle-engine:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho-kettle</data>
+	<data key="artifactId">kettle-engine</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar|compile|pentaho-kettle:kettle-engine:7.1-SNAPSHOT:jar" source="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar" target="pentaho-kettle:kettle-engine:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+<node id="pentaho-kettle:kettle-core:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>kettle-core:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">kettle-core:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho-kettle</data>
+	<data key="artifactId">kettle-core</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<node id="pentaho:metastore:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>metastore:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">metastore:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">metastore</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="pentaho-kettle:kettle-core:7.1-SNAPSHOT:jar|compile|pentaho:metastore:7.1-SNAPSHOT:jar" source="pentaho-kettle:kettle-core:7.1-SNAPSHOT:jar" target="pentaho:metastore:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+<edge id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar|compile|pentaho-kettle:kettle-core:7.1-SNAPSHOT:jar" source="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar" target="pentaho-kettle:kettle-core:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+<node id="pentaho:pentaho-platform-api:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>pentaho-platform-api:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">pentaho-platform-api:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">pentaho-platform-api</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar|compile|pentaho:pentaho-platform-api:7.1-SNAPSHOT:jar" source="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar" target="pentaho:pentaho-platform-api:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+<node id="pentaho:pentaho-platform-core:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>pentaho-platform-core:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">pentaho-platform-core:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">pentaho-platform-core</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar|compile|pentaho:pentaho-platform-core:7.1-SNAPSHOT:jar" source="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar" target="pentaho:pentaho-platform-core:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+<node id="pentaho:pentaho-ee-dsc-core:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>pentaho-ee-dsc-core:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">pentaho-ee-dsc-core:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">pentaho-ee-dsc-core</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar|compile|pentaho:pentaho-ee-dsc-core:7.1-SNAPSHOT:jar" source="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar" target="pentaho:pentaho-ee-dsc-core:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+<node id="pentaho:pentaho-platform-core-test:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>pentaho-platform-core-test:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">pentaho-platform-core-test:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">pentaho-platform-core-test</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar|test|pentaho:pentaho-platform-core-test:7.1-SNAPSHOT:jar" source="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar" target="pentaho:pentaho-platform-core-test:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>test</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">test</data></edge>
+<node id="pentaho:pentaho-platform-extensions:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>pentaho-platform-extensions:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">pentaho-platform-extensions:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">pentaho-platform-extensions</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar|test|pentaho:pentaho-platform-extensions:7.1-SNAPSHOT:jar" source="pentaho:pentaho-geo-core:7.1-SNAPSHOT:jar" target="pentaho:pentaho-platform-extensions:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>test</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">test</data></edge>
+</graph></graphml>

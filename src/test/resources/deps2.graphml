@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?> <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key for="node" id="d0" yfiles.type="nodegraphics"/> 
+  <key for="edge" id="d1" yfiles.type="edgegraphics"/> 
+  <key for="node" id="_name" attr.name="_name" attr.type="string"/> 
+  <key for="edge" id="_label" attr.name="_label" attr.type="string"/> 
+  <key for="node" id="groupId" attr.name="groupId" attr.type="string"/> 
+  <key for="node" id="artifactId" attr.name="artifactId" attr.type="string"/> 
+  <key for="node" id="version" attr.name="version" attr.type="string"/> 
+  <key for="node" id="classifier" attr.name="classifier" attr.type="string"/> 
+  <key for="node" id="type" attr.name="type" attr.type="string"/> 
+<graph id="dependencies" edgedefault="directed">
+<node id="org.pentaho:my-pentaho-project:1.0-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>my-pentaho-project:1.0-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">my-pentaho-project:1.0-SNAPSHOT</data>
+	<data key="groupId">org.pentaho</data>
+	<data key="artifactId">my-pentaho-project</data>
+	<data key="version">1.0-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<node id="pentaho:mondrian:3.14-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>mondrian:3.14-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">mondrian:3.14-SNAPSHOT</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">mondrian</data>
+	<data key="version">3.14-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="org.pentaho:my-pentaho-project:1.0-SNAPSHOT:jar|compile|pentaho:mondrian:3.14-SNAPSHOT:jar" source="org.pentaho:my-pentaho-project:1.0-SNAPSHOT:jar" target="pentaho:mondrian:3.14-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+<node id="pentaho:pentaho-metadata:7.1-MVN-TEST-544:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>pentaho-metadata:7.1-MVN-TEST-544</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">pentaho-metadata:7.1-MVN-TEST-544</data>
+	<data key="groupId">pentaho</data>
+	<data key="artifactId">pentaho-metadata</data>
+	<data key="version">7.1-MVN-TEST-544</data>
+	<data key="type">jar</data></node>
+<edge id="org.pentaho:my-pentaho-project:1.0-SNAPSHOT:jar|compile|pentaho:pentaho-metadata:7.1-MVN-TEST-544:jar" source="org.pentaho:my-pentaho-project:1.0-SNAPSHOT:jar" target="pentaho:pentaho-metadata:7.1-MVN-TEST-544:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+<node id="pentaho-kettle:kettle-engine:7.1-SNAPSHOT:jar">
+	<data key="d0"><y:ShapeNode><y:NodeLabel>kettle-engine:7.1-SNAPSHOT</y:NodeLabel></y:ShapeNode></data>
+	<data key="_name">kettle-engine:7.1-SNAPSHOT</data>
+	<data key="groupId">pentaho-kettle</data>
+	<data key="artifactId">kettle-engine</data>
+	<data key="version">7.1-SNAPSHOT</data>
+	<data key="type">jar</data></node>
+<edge id="org.pentaho:my-pentaho-project:1.0-SNAPSHOT:jar|compile|pentaho-kettle:kettle-engine:7.1-SNAPSHOT:jar" source="org.pentaho:my-pentaho-project:1.0-SNAPSHOT:jar" target="pentaho-kettle:kettle-engine:7.1-SNAPSHOT:jar"><data key="d1"><y:PolyLineEdge><y:EdgeLabel>compile</y:EdgeLabel></y:PolyLineEdge></data><data key="_label">compile</data></edge>
+</graph></graphml>
