@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-package org.pentaho.graphmlmerger;
+package org.pentaho.graphmlmerger.util;
 
 import org.apache.tinkerpop.gremlin.structure.Edge;
 import org.apache.tinkerpop.gremlin.structure.Graph;
@@ -26,7 +26,6 @@ import org.apache.tinkerpop.gremlin.structure.T;
 import org.apache.tinkerpop.gremlin.structure.Vertex;
 import org.apache.tinkerpop.gremlin.structure.io.IoCore;
 import org.apache.tinkerpop.gremlin.structure.io.graphml.GraphMLReader;
-import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerFactory;
 import org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerGraph;
 import org.apache.tinkerpop.gremlin.util.iterator.IteratorUtils;
 
@@ -87,9 +86,7 @@ public class GraphmlMerger {
         Vertex out = graph.traversal().V( edge.outVertex().id() ).next();
         Vertex in = graph.traversal().V( edge.inVertex().id() ).next();
         try {
-//          out.addEdge( edge.label(), in, T.id, out.id() + "|" + in.id() );
           out.addEdge( edge.label(), in, T.id, edge.id() );
-
         } catch ( IllegalArgumentException e ) {
           // edge is already there, ignore it
           System.out.println( e.getMessage() );
