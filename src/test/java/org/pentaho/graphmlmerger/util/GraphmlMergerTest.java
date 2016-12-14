@@ -46,6 +46,7 @@ public class GraphmlMergerTest {
   public void testGraphmlMerger_mergeFile() throws Exception {
     GraphmlMerger graphmlMerger = new GraphmlMerger();
     mergeFile( graphmlMerger );
+    graphmlMerger.writeMergedGraph( "target/merged.graphml" );
     graphmlMerger.getGraph().close();
   }
 
@@ -72,8 +73,6 @@ public class GraphmlMergerTest {
     merger.mergeFile( "src/test/resources/deps3.graphml" );
     assertEquals( 30, IteratorUtils.count( merger.getGraph().vertices() ) );
     assertEquals( 39, IteratorUtils.count( merger.getGraph().edges() ) );
-
-    merger.writeMergedGraph( "target/merged.graphml" );
 
     DependencyQueryService service = new DependencyQueryService( merger.getGraph() );
 
