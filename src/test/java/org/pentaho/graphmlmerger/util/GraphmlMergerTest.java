@@ -22,6 +22,7 @@ package org.pentaho.graphmlmerger.util;
 
 import org.apache.tinkerpop.gremlin.neo4j.structure.Neo4jGraph;
 import org.apache.tinkerpop.gremlin.util.iterator.IteratorUtils;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.neo4j.graphdb.GraphDatabaseService;
@@ -41,15 +42,24 @@ import static org.junit.Assert.*;
  */
 public class GraphmlMergerTest {
 
-  GraphmlMerger merger;
-
-  @Before
-  public void setUp() throws Exception {
-    merger = new GraphmlMerger();
+  @Test
+  public void testGraphmlMerger_mergeFile() throws Exception {
+    GraphmlMerger graphmlMerger = new GraphmlMerger();
+    mergeFile( graphmlMerger );
+    graphmlMerger.getGraph().close();
   }
 
   @Test
-  public void mergeFile() throws Exception {
+  public void testNeo4jGraphmlMerger_mergeFile() throws Exception {
+    String graphDbLocation = "target/neo4j/data/databases/graph.db";
+    Neo4jGraph neo4jGraph = Neo4jGraph.open( graphDbLocation );
+    Neo4JGraphmlMerger neo4jMerger = new Neo4JGraphmlMerger( neo4jGraph );
+    mergeFile( neo4jMerger );
+    neo4jMerger.getGraph().close();
+  }
+
+  private void mergeFile( GraphmlMerger merger ) throws Exception {
+
     merger.mergeFile( "src/test/resources/deps.graphml" );
     assertEquals( 10, IteratorUtils.count( merger.getGraph().vertices() ) );
     assertEquals( 9, IteratorUtils.count( merger.getGraph().edges() ) );
@@ -98,6 +108,8 @@ public class GraphmlMergerTest {
         System.out.println( dependency.toString() + " depends transitively on " + kettleEngine.toString() );
       }
     } );
+
+
 
 
   }

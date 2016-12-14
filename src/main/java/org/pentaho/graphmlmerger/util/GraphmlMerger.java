@@ -68,13 +68,7 @@ public class GraphmlMerger {
       Iterator<Vertex> vertexIterator = tmpGraph.vertices();
       IteratorUtils.stream( vertexIterator ).forEach( vertex -> {
         try {
-          graph.addVertex( T.id, vertex.id(),
-            T.label, vertex.label(),
-            "groupId", vertex.property( "groupId" ).value(),
-            "artifactId", vertex.property( "artifactId" ).value(),
-            "version", vertex.property( "version" ).value()
-          );
-
+          mergeVertex( vertex );
         } catch ( IllegalArgumentException e ) {
           // vertex is already there, ignore this error
           System.out.println( e.getMessage() );
@@ -83,10 +77,8 @@ public class GraphmlMerger {
 
       Iterator<Edge> edgeIterator = tmpGraph.edges();
       IteratorUtils.stream( edgeIterator ).forEach( edge -> {
-        Vertex out = graph.traversal().V( edge.outVertex().id() ).next();
-        Vertex in = graph.traversal().V( edge.inVertex().id() ).next();
         try {
-          out.addEdge( edge.label(), in, T.id, edge.id() );
+          mergeEdge( edge );
         } catch ( IllegalArgumentException e ) {
           // edge is already there, ignore it
           System.out.println( e.getMessage() );
@@ -96,6 +88,21 @@ public class GraphmlMerger {
     } catch ( IOException e ) {
       e.printStackTrace();
     }
+  }
+
+  protected Vertex mergeVertex( Vertex originalVertex ) throws IllegalArgumentException {
+    return getGraph().addVertex( T.id, originalVertex.id(),
+      T.label, originalVertex.label(),
+      "groupId", originalVertex.property( "groupId" ).value(),
+      "artifactId", originalVertex.property( "artifactId" ).value(),
+      "version", originalVertex.property( "version" ).value()
+    );
+  }
+
+  protected Edge mergeEdge( Edge originalEdge ) throws IllegalArgumentException {
+    Vertex out = getGraph().traversal().V( originalEdge.outVertex().id() ).next();
+    Vertex in = getGraph().traversal().V( originalEdge.inVertex().id() ).next();
+    return out.addEdge( originalEdge.label(), in, T.id, originalEdge.id() );
   }
 
   protected Graph getGraph() {
