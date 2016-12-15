@@ -61,6 +61,7 @@ public class GraphmlMergerTest {
 
   private void mergeFile( GraphmlMerger merger ) throws Exception {
 
+    // merge the graphml files one at a time
     merger.mergeFile( "src/test/resources/deps.graphml" );
     assertEquals( 10, IteratorUtils.count( merger.getGraph().vertices() ) );
     assertEquals( 9, IteratorUtils.count( merger.getGraph().edges() ) );
@@ -69,13 +70,15 @@ public class GraphmlMergerTest {
     assertEquals( 13, IteratorUtils.count( merger.getGraph().vertices() ) );
     assertEquals( 12, IteratorUtils.count( merger.getGraph().edges() ) );
 
-
     merger.mergeFile( "src/test/resources/deps3.graphml" );
     assertEquals( 30, IteratorUtils.count( merger.getGraph().vertices() ) );
     assertEquals( 39, IteratorUtils.count( merger.getGraph().edges() ) );
 
+
+    // Now that the graph is merged, create a query service against it
     DependencyQueryService service = new DependencyQueryService( merger.getGraph() );
 
+    // Determine the direct downstream dependencies of the pentaho-geo-core artifact according to our merged graph
     MavenDependency geoCore = new MavenDependency( "pentaho-geo-core" );
     List<MavenDependency> dependencies = service.findDependents( geoCore );
 
@@ -87,18 +90,24 @@ public class GraphmlMergerTest {
     MavenDependency analyzerCore = new MavenDependency( "pentaho-analyzer-core" );
     MavenDependency kettleEngine = new MavenDependency( "pentaho-kettle", "kettle-engine" );
 
+    // Verify kettle-engine is a transitive dependency of analyzer-core
     assertEquals( DependencyType.TRANSITIVE, service.determineDependencyType( analyzerCore, kettleEngine ) );
+
+    // Verify geo-core does NOT depend on analyzer-core at all
     assertEquals( DependencyType.NONE, service.determineDependencyType( geoCore, analyzerCore ) );
+
+    // Verify analyzer-core directly depends on geo-core
     assertEquals( DependencyType.DIRECT, service.determineDependencyType( analyzerCore, geoCore ) );
 
     // multi-level depth transitives
     assertEquals( DependencyType.TRANSITIVE, service.determineDependencyType( analyzerCore, new MavenDependency( "metastore" ) ) );
 
-    // granular requests
+    // try with more more granular artifact definitions (add groupId and/or version)
     assertEquals( DependencyType.TRANSITIVE, service.determineDependencyType( analyzerCore, new MavenDependency( "pentaho", "pentaho-registry" ) ) );
     assertEquals( DependencyType.NONE, service.determineDependencyType( analyzerCore, new MavenDependency( "pentaho", "pentaho-registry", "6.1-SNAPSHOT" ) ) );
     assertEquals( DependencyType.TRANSITIVE, service.determineDependencyType( analyzerCore, new MavenDependency( "pentaho", "pentaho-registry", "7.1-SNAPSHOT" ) ) );
 
+    // Get ALL downstream dependent artifacts (direct and transitive) of kettle-engine
     dependencies = service.findDependents( kettleEngine, true );
     dependencies.stream().forEach( dependency -> {
       if ( dependency.getDependencyType() == DependencyType.DIRECT ) {

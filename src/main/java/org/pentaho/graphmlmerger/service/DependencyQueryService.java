@@ -53,13 +53,19 @@ public class DependencyQueryService {
 
   /**
    * Finds all direct downstream dependent projects (Those projects that resolve the one in question)
-   * @param dependency
+   * @param dependency            MavenDependency to find downstream dependent projects of
    * @return
    */
   public List<MavenDependency> findDependents( MavenDependency dependency ) {
     return findDependents( dependency, false );
   }
 
+  /**
+   * Finds downstream dependent projects
+   * @param dependency            MavenDependency to find downstream dependent projects of
+   * @param includeTransitives
+   * @return
+   */
   public List<MavenDependency> findDependents( MavenDependency dependency, boolean includeTransitives ) {
     final Set<MavenDependency> tmp = new HashSet<>();
 
@@ -129,6 +135,18 @@ public class DependencyQueryService {
     }
   }
 
+  /**
+   * Determine how 2 MavenDependencies are connected. Currently this only walks the graph in one direction. It will start
+   * at the source (first argument) and walk the OUT links until it finds the target (2nd argument).
+   * @param source The MavenDependency you want to know if it has a dependency on the target
+   * @param target The MavenDependency you want to know if it is a dependency of the source
+   * @return
+   *    <pre>
+   *    DependencyType.DIRECT      if the source depends immediately on the target<br/>
+   *    DependencyType.TRANSITIVE  if the source depends on the target through an intermediate node<br/>
+   *    DependencyType.NONE        if the target is not a dependency of the source at all
+   *    </pre>
+   */
   public DependencyType determineDependencyType( MavenDependency source, MavenDependency target ) {
     assert ( source != null );
     assert ( source.getArtifactId() != null );
