@@ -73,6 +73,12 @@
       <groupId>org.apache.tinkerpop</groupId>
       <artifactId>neo4j-gremlin</artifactId>
       <version>3.2.3</version>
+      <exclusions>
+        <exclusion>
+          <groupId>com.github.jerymyh</groupId>
+          <artifactId>jbcrypt</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <!-- neo4j-tinkerpop-api-impl is NOT Apache 2 licensed - more information below -->
     <dependency>
