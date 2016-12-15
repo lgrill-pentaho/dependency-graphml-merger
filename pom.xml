@@ -76,7 +76,7 @@
       <exclusions>
         <exclusion>
           <groupId>com.github.jeremyh</groupId>
-          <artifactId>jbcrypt</artifactId>
+          <artifactId>jBCrypt</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
