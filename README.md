@@ -57,3 +57,18 @@ MATCH(a:Artifact) return a;
   * Some commandline tool or maven plugin that devs can run to determine what downstream projects depend on the one they are interested in
   * Automate the downstream relationships of Jenkins (devci) jobs
   
+ 
+### Sample neo4j cypher queries
+This is a great resource for learning cypher: http://neo4j.com/docs/developer-manual/3.1/cypher/clauses/
+
+Get all artifacts (up to 6 relationships away) that depend on kettle-engine
+```
+match (a:Artifact {artifactId: "kettle-engine"})<-[*1..6]-(d:Artifact)
+return a,d;
+```
+
+Get all artifacts that either depend on pentaho-geo-core or that pentaho-geo-core depends on
+```
+match (a:Artifact {artifactId: "pentaho-geo-core"})-[*1..6]-(d:Artifact)
+return a,d;
+```
